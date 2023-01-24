@@ -6,58 +6,55 @@ import br.com.dio.desafio.dominio.Mentoria;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
+	public static void main(String[] args) {
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
+		Curso curso1 = new Curso();
+		curso1.setTitulo("Desenvolvimento basico em Java");
+		curso1.setDescricao("Aprenda desde os conceitos e instalacao ate a execucao de projetos em Java");
+		curso1.setCargaHoraria(6);
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
+		Curso curso2 = new Curso();
+		curso2.setTitulo("Introducao programacao com Python");
+		curso2.setDescricao(
+				"O curso traz todo o embasamento da linguagem Python, quando e onde sao mais indicado aplic�-la.");
+		curso2.setCargaHoraria(8);
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+		Curso curso3 = new Curso();
+		curso3.setTitulo("Criando aplicacoes web com Spring Web MVC");
+		curso3.setDescricao(
+				"O Spring Web MVC reune varias funcoes em apenas uma ferramenta que otimiza o trabalho do desenvolvedor.");
+		curso3.setCargaHoraria(7);
 
-        Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        devCamila.progredir();
-        devCamila.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+		Mentoria mentoria1 = new Mentoria();
+		mentoria1.setTitulo("Mentoria Java");
+		mentoria1.setDescricao("O time de Education da DIO falar sobre essa linguagem que e muito usada no mercado");
+		mentoria1.setCargaHoraria(2);
+		mentoria1.setData(LocalDate.now());
 
-        System.out.println("-------");
+		Bootcamp bootcamp1 = new Bootcamp();
+		bootcamp1.setNome("Bootcamp Java Developer");
+		bootcamp1.setDescricao("Descricao Bootcamp Java Developer");
+		bootcamp1.getConteudos().add(curso1);
+		bootcamp1.getConteudos().add(curso2);
+		bootcamp1.getConteudos().add(mentoria1);
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+		Dev dev1 = new Dev();
+		dev1.setId(14);
+		dev1.setNome("Beatriz");
+		dev1.inscreverBootcamp(bootcamp1);
+		System.out.println("Conteudos Inscritos Beatriz:" + dev1.getConteudosInscritos());
+		dev1.progredir();
+		dev1.progredir();
+		dev1.progredir();
+		System.out.println("Conteudos Concluidos Beatriz:" + dev1.getConteudosConcluidos());
+		System.out.println("XP:" + dev1.calcularTotalXP());
 
-    }
+		bootcamp1.gerarCertificado(dev1);
+
+		Dev dev2 = new Dev(7, "Tadeu");
+		bootcamp1.gerarCertificado(dev2);
+
+	}
 
 }
